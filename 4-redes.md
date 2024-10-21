@@ -48,9 +48,37 @@ docker network ls
 
 ![Imagen](img/esquema-ejercicio-redes.PNG)
 
+### Redes y contenedores del esquema
+
+    docker network create netcurso01 -d bridge
+
+    docker network create netcurso02 -d bridge
+
+    docker run -d --name contenedor1 --network netcurso01 nginx:alpine
+
+    docker run -d --name contenedor2 --network netcurso01 nginx:alpine
+
+    docker run -d --name contenedor3 --network netcurso01 --network netcurso02 nginx:alpine
+
+    docker run -d --name contenedor4 --network netcurso02 nginx:alpine
+
 # COLOCAR UNA CAPTURA DE LAS REDES EXISTENTES CREADAS
 
+![redes](evidencia/redesContenedores.png)
+
 # COLOCAR UNA(S) CAPTURAS(S) DE LOS CONTENEDORES CREADOS EN DONDE SE EVIDENCIE A QUÉ RED ESTÁN VINCULADOS
+
+## Network net-curso01
+
+    docker network inspect netcurso01
+
+![redes](evidencia/cursoNet01.png)
+
+## Network net-curso02
+
+    docker network inspect netcurso01
+
+![redes](evidencia/cursoNet02.png)
 
 ### Para eliminar las redes creadas
 ```
